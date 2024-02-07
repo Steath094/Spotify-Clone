@@ -59,3 +59,41 @@ body{
 .footer a{
     color: grey;
 }
+
+.right{
+    margin: 16px 0px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(29, 29, 29);
+}
+.header > *{
+    padding: 20px;
+}
+
+.spotifyPlaylists{
+    padding: 16px;
+}
+
+.spotifyPlaylists .card{
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+}
+
+.cardContainer{
+    margin: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card >*{
+    padding-top: 10px;
+}
+.card img{
+    width: 100%;
+    object-fit: contain;
+}
