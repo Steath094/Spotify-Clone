@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
-    <title>Document</title>
+    <title>Spotify - Web Player: Music for everyone</title>
 </head>
 <body>
     <div class="container flex bg-black">
         <div class="left ">
             <div class="home bg-grey rounded m-1 p-1">
-                <div class="logo"><img class="invert" src="img/logo.svg" alt="Logo"></div>
+                <div class="logo"><img width="150px" class="invert" src="img/logo.svg" alt="Logo"></div>
                 <ul>
                     <li><img  class="invert"  src="img/home.svg" alt="home">Home</li>
                     <li><img  class="invert"  src="img/search.svg" alt="search">Search</li>
@@ -20,6 +20,11 @@
             <div class="library bg-grey rounded m-1 p-1">
                 <div class="heading"><img class="invert" src="img/playlist.svg" alt="">
                     <h2>Your Library</h2>
+                </div>
+                <div class="songslist">
+                    <ul>
+                        
+                    </ul>
                 </div>
                 <div class="footer">
                     <div><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
@@ -46,8 +51,8 @@
                     </svg>
                 </div>
                 <div class="buttons">
-                    <button>Sign UP</button>
-                    <button>Log In</button>
+                    <button class="signupbtn">Sign UP</button>
+                    <button class="loginbtn">Log In</button>
                 </div>
             </div>
             <div class="spotifyPlaylists">
@@ -55,24 +60,46 @@
                 <div class="cardContainer">
                     <div class="card">
                         <div class="play">
+                            <div>
+                                <svg width="16" height ="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141834" stroke-width="1.5" stroke-linejoin="round" fill="#000"/>
+                                </svg>
+                            </div>
                         </div>
                         <img src="songs/cs/cover.jpg" alt="">
                         <h2>Happy Hits</h2>
                         <p>Hits to boost Your Mood and Fill you with happiness!</p>
                     </div>
                     <div class="card">
-                        <img src="songs/cs/cover.jpg" alt="">
-                        <h2>Happy Hits</h2>
-                        <p>Hits to boost Your Mood and Fill you with happiness!</p>
-                    </div>
-                    <div class="card">
+                        <div class="play">
+                            <div>
+                                <svg width="16" height ="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 20V4L19 12L5 20Z" stroke="#141834" stroke-width="1.5" stroke-linejoin="round" fill="#000"/>
+                                </svg>
+                            </div>
+                        </div>
                         <img src="songs/cs/cover.jpg" alt="">
                         <h2>Happy Hits</h2>
                         <p>Hits to boost Your Mood and Fill you with happiness!</p>
                     </div>
                 </div>
+                <div class="playbar">
+                    <div class="seekbar">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="abovebar">
+                        <div class="songinfo"></div>
+                        <div class="songbuttons">
+                            <img id="previous" src="img/prevsong.svg" alt="">
+                            <img id="play" src="img/play.svg" alt="">
+                            <img id="next" src="img/nextsong.svg" alt="">
+                        </div>
+                        <div class="songtime"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
