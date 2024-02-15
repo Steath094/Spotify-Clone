@@ -249,6 +249,9 @@ body{
 .songbuttons img{
     cursor: pointer;
 }
+.songinfo{
+    width: 250px;
+}
 .songinfo ,.songtime{
     color: black;
     padding: 0 12px;
@@ -258,10 +261,23 @@ body{
     justify-content: space-between;
     margin: 20px 0px;
 }
+.timevol{
+    /* width: 210px; */
+    justify-content: space-evenly;
+}
+.volume{
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (max-width: 1200px) {
     .header > * {
         padding: 20px 10px;
+    }
+    .songinfo{
+        width: auto;
     }
     .left{
         background-color: black;
@@ -285,7 +301,7 @@ body{
     }
     .playbar{
         width: calc(100vw - 60px);
-        bottom: 10px;  
+        bottom: 0px;  
     }
     .seekbar{
         width: calc(100vw - 70px);
@@ -311,5 +327,12 @@ body{
         flex-direction: column;
         align-items: center;
         gap: 12px;
+    }
+    .timevol{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        gap: 13px;
     }
 }
