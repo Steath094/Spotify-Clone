@@ -63,14 +63,14 @@ async function main() {
     }
     // attach an Event listner to each song
     Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(e=>{
-        e.addEventListener("click",element=>{
+        e.addEventListener("click touchstart",element=>{
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
 
     })
 
     // attach an event listner to play,next and previous
-    play.addEventListener("click", ()=>{
+    play.addEventListener("click touchstart", ()=>{
         if(currentSong.paused){
             currentSong.play()
             play.src = "img/pause.svg"
@@ -87,21 +87,21 @@ async function main() {
     })
 
     //add an event listner to seekbar
-    document.querySelector(".seekbar").addEventListener("click",e=>{
+    document.querySelector(".seekbar").addEventListener("click touchstart",e=>{
         let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100
         document.querySelector(".circle").style.left= percent +"%";
         currentSong.currentTime = (currentSong.duration *percent)/100
     })
     //add an event listner for hamburger
-    document.querySelector(".hamburger").addEventListener("click",()=>{
+    document.querySelector(".hamburger").addEventListener("click touchstart",()=>{
         document.querySelector(".left").style.left = "0"
     })
     //add an event listner for close button
-    document.querySelector(".close").addEventListener("click",()=>{
+    document.querySelector(".close").addEventListener("click touchstart",()=>{
         document.querySelector(".left").style.left = "-130%"
     })
     // add an event listner to previous 
-    previous.addEventListener("click",()=>{
+    previous.addEventListener("click touchstart",()=>{
         currentSong.pause()
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         
@@ -111,7 +111,7 @@ async function main() {
         }
     })
     // add an event listner to next 
-    next.addEventListener("click",()=>{
+    next.addEventListener("click touchstart",()=>{
         currentSong.pause()
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         
