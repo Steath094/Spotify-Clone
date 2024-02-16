@@ -63,14 +63,14 @@ async function main() {
     }
     // attach an Event listner to each song
     Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(e=>{
-        e.addEventListener("click touchstart",element=>{
+        e.addEventListener("click", (element)=>{
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
 
     })
 
     // attach an event listner to play,next and previous
-    play.addEventListener("click touchstart", ()=>{
+    play.addEventListener("click", ()=>{
         if(currentSong.paused){
             currentSong.play()
             play.src = "img/pause.svg"
@@ -80,28 +80,28 @@ async function main() {
             play.src = "img/play.svg"
         }
     })
-    currentSong.addEventListener("timeupdate",(a)=>{
+    currentSong.addEventListener("timeupdate", (a)=>{
         document.querySelector(".songtime").innerHTML = `${
             secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left= (currentSong.currentTime/ currentSong.duration) * 100 + "%"
     })
 
     //add an event listner to seekbar
-    document.querySelector(".seekbar").addEventListener("click touchstart",e=>{
+    document.querySelector(".seekbar").addEventListener("click", (e)=>{
         let percent = (e.offsetX/e.target.getBoundingClientRect().width)*100
         document.querySelector(".circle").style.left= percent +"%";
         currentSong.currentTime = (currentSong.duration *percent)/100
     })
     //add an event listner for hamburger
-    document.querySelector(".hamburger").addEventListener("click touchstart",()=>{
+    document.querySelector(".hamburger").addEventListener("click", ()=>{
         document.querySelector(".left").style.left = "0"
     })
     //add an event listner for close button
-    document.querySelector(".close").addEventListener("click touchstart",()=>{
+    document.querySelector(".close").addEventListener("click", ()=>{
         document.querySelector(".left").style.left = "-130%"
     })
     // add an event listner to previous 
-    previous.addEventListener("click touchstart",()=>{
+    previous.addEventListener("click", ()=>{
         currentSong.pause()
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         
@@ -111,7 +111,7 @@ async function main() {
         }
     })
     // add an event listner to next 
-    next.addEventListener("click touchstart",()=>{
+    next.addEventListener("click", ()=>{
         currentSong.pause()
         let index = songs.indexOf(currentSong.src.split("/").slice(-1)[0])
         
@@ -121,7 +121,7 @@ async function main() {
         }
     })
     //add an event to volume
-    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e)=>{
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e)=>{
         console.log("setting value to " + e.target.value);
         currentSong.volume = (e.target.value/100)
         // currentSong.setVolume(parseInt(e.target.value/100))
