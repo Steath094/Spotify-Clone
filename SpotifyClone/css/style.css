@@ -350,13 +350,14 @@ body{
         gap: 13px;
     }
     .cardContainer{
+        margin-bottom: 25vh;
         max-height: unset;
         overflow-y: unset;
     }
 }
 @media (max-width: 500px) {
     .card{
-        width: 100%;
+        width: 85%;
     }
     
     .spotifyPlaylists{
@@ -368,4 +369,12 @@ body{
     .playbar {
         right: 19px;
     }
+    .play{
+        height: 40px;
+        width: 40px;
+        bottom: 100px;
+        right: 20px;
+        top: unset;
+    }
+
 }
