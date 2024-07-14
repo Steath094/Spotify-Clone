@@ -22,21 +22,33 @@ async function getSongs(folder) {
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
-    songs = []
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if(element.href.endsWith(".mp3")){
-            songs.push(element.href.split(`/${folder}/`)[1])
-        }
+    // songs = []
+    songs = [
+        {songName: "RAASHAH.mp3", filePath: "songs/Angry_(mood)/RAASHAH.mp3"},
+        {songName: "JASHAN-E-HIPHOP Song RAFTAAR.mp3", filePath: "songs/Bright_(mood)/JASHAN-E-HIPHOP Song RAFTAAR.mp3"},
+        {songName: "TWO TONE Song Young Stunners.mp3", filePath: "songs/cs/TWO TONE Song Young Stunners.mp3"},
+        {songName: "Dont Mind Song By Young Stunners.mp3", filePath: "songs/Dark_(mood)/Dont Mind Song By Young Stunners.mp3"},
+        {songName: "Bhussi - Seedhe Maut [64] Kbps-(SongsPk.com.se).mp3", filePath: "songs/Diljit/Bhussi - Seedhe Maut [64] Kbps-(SongsPk.com.se).mp33"},
+        {songName: "Brand-New.mp3", filePath: "songs/Funky_(mood)/Brand-New.mp3"},
+        {songName: "Why Not Meri Jaan Song Mp3 Download Young Stunners.mp3", filePath: "songs/Angry_(mood)/Why Not Meri Jaan Song Mp3 Download Young Stunners.mp3"},
+    ]
+    
+    // for (let index = 0; index < as.length; index++) {
+    //     const element = as[index];
+    //     console.log(element);
+    //     if(element.href.endsWith(".mp3")){
+    //         songs.push(element.href.split(`/${folder}/`)[1])
+    //     }
         
-    }
+    // }
+    // console.log(songs);
     // show all the song in the playlist
     let songUL = document.querySelector(".songslist").getElementsByTagName("ul")[0]
     songUL.innerHTML = ""
     for (const song of songs) {
         songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" src="img/music.svg" alt="">
                             <div class="info">
-                                <div>${song.replaceAll("%20"," ")}</div>
+                                <div>${song.songName}</div>
                                 <div>Sameer</div>
                             </div>
                             <div class="playnow">
@@ -48,6 +60,7 @@ async function getSongs(folder) {
     // attach an Event listner to each song
     Array.from(document.querySelector(".songslist").getElementsByTagName("li")).forEach(e=>{
         e.addEventListener("click", (element)=>{
+            // console.log(element);
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim())
         })
 
@@ -56,7 +69,17 @@ async function getSongs(folder) {
 
 const playMusic = (track, pause=false)=>{
     // let audio = new Audio("/song/" + track)
-    currentSong.src = `/${currFolder}/` + track
+    let trackNum =0;
+    for (let index = 0; index < songs.length; index++) {
+        if (songs[index].songName==track) {
+            trackNum = index;
+            break;
+        }
+        
+    }
+    console.log(songs[trackNum].filePath);
+    currentSong.src = songs[trackNum].filePath
+    console.log(track);
     if(!pause){
         currentSong.play();
         
@@ -123,7 +146,6 @@ async function displayAlbums() {
                 console.log("Fetching Songs")
                 songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)  
                 // playMusic((songs[0].replaceAll("%20"," ")),true)
-
             })
         })
 
